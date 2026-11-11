@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untold Archive — A catalogue of untold stories</title>
+  <meta name="description" content="An independent index of unresolved mysteries, landmark investigations, space and cinema. Each file opens the original Russian edition.">
+  <meta name="theme-color" content="#12160f">
+  <meta property="og:title" content="Untold Archive — A catalogue of untold stories">
+  <meta property="og:description" content="Unresolved mysteries, landmark investigations, space, and cinema. One story, one website.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%2312160f'/%3E%3Cpath d='M16 5v22M5 16h22M8.2 8.2l15.6 15.6M23.8 8.2 8.2 23.8' fill='none' stroke='%23d2ab7d' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep: #12160f;
+      --deep-2: #191e16;
+      --deep-3: #222a1f;
+      --paper: #f0ece2;
+      --paper-light: #f7f3ea;
+      --paper-deep: #e7e0d2;
+      --ink: #191b14;
+      --ink-soft: rgba(25, 27, 20, 0.7);
+      --ink-faint: rgba(25, 27, 20, 0.53);
+      --cream: #f5f1e7;
+      --cream-soft: rgba(245, 241, 231, 0.7);
+      --rust: #af4225;
+      --rust-dark: #90331b;
+      --gold: #d2ab7d;
+      --sage: #9ba78c;
+      --line: rgba(25, 27, 20, 0.16);
+      --line-light: rgba(245, 241, 231, 0.18);
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "Manrope", "Helvetica Neue", sans-serif;
+      --mono: "DM Mono", "Courier New", monospace;
+      --container: 1400px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.menu-open { overflow: hidden; }
+    ::selection { background: var(--rust); color: var(--cream); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button, select { color: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    ul, ol, dl, dd { margin: 0; padding: 0; }
+    h1, h2, h3, p, figure { margin: 0; }
+    svg { display: block; }
+    .container { width: min(var(--container), calc(100% - 72px)); margin-inline: auto; }
+    .sr-only {
+      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .mono {
+      font-family: var(--mono);
+      font-size: 10px;
+      line-height: 1.5;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .accent { color: var(--rust); }
+    :focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
+    .sr-skip {
+      position: fixed; left: 16px; top: -60px; z-index: 300;
+      background: var(--cream); color: var(--ink); padding: 10px 16px;
+      font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+      transition: top 0.2s;
+    }
+    .sr-skip:focus { top: 16px; }
+    .grain {
+      position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0.052;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.72'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    /* ————— Header ————— */
+    .site-header {
+      position: sticky; top: 0; z-index: 120;
+      background: rgba(18, 22, 15, 0.96);
+      color: var(--cream);
+      border-bottom: 1px solid var(--line-light);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      min-height: 76px; display: flex; align-items: center; gap: 28px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-mark {
+      width: 35px; height: 35px; border: 1px solid rgba(245, 241, 231, 0.36);
+      border-radius: 50%; display: grid; place-items: center;
+      transition: transform 0.7s var(--ease), border-color 0.3s;
+    }
+    .brand:hover .brand-mark { transform: rotate(90deg); border-color: var(--gold); }
+    .brand-mark svg { width: 17px; height: 17px; color: var(--gold); }
+    .brand-copy { display: flex; flex-direction: column; gap: 1px; }
+    .brand-name {
+      font-weight: 800; font-size: 14px; line-height: 1.1;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .brand-sub {
+      font-family: var(--mono); font-size: 7.5px; line-height: 1.4;
+      letter-spacing: 0.22em; color: var(--cream-soft); text-transform: uppercase;
+    }
+    .main-nav { display: flex; align-items: center; gap: 27px; margin-left: auto; }
+    .main-nav a {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--cream-soft); position: relative;
+      padding: 5px 0; transition: color 0.25s;
+    }
+    .main-nav a::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px;
+      background: var(--gold); transition: right 0.35s var(--ease);
+    }
+    .main-nav a:hover { color: var(--cream); }
+    .main-nav a:hover::after { right: 0; }
+    .header-actions { display: flex; align-items: center; gap: 9px; }
+    .search-trigger {
+      height: 36px; padding: 0 9px 0 12px; border: 1px solid rgba(245, 241, 231, 0.24);
+      border-radius: 100px; background: transparent; color: var(--cream-soft);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.25s, border-color 0.25s, background 0.25s;
+    }
+    .search-trigger:hover { color: var(--cream); border-color: rgba(245, 241, 231, 0.5); background: rgba(245, 241, 231, 0.05); }
+    .search-trigger svg { width: 14px; height: 14px; }
+    .search-trigger .mono { font-size: 8px; letter-spacing: 0.1em; }
+    kbd {
+      font-family: var(--mono); font-size: 9px; line-height: 1; min-width: 17px;
+      height: 18px; display: inline-grid; place-items: center; padding: 0 4px;
+      border: 1px solid rgba(245, 241, 231, 0.24); border-radius: 3px;
+      color: var(--cream-soft); background: rgba(245, 241, 231, 0.04);
+    }
+    .lang-switch {
+      display: flex; align-items: center; height: 36px; border: 1px solid rgba(245, 241, 231, 0.24);
+      border-radius: 100px; padding: 2px; gap: 1px; overflow: hidden;
+    }
+    .lang-switch button, .lang-switch a {
+      height: 30px; min-width: 30px; padding: 0 7px; border: 0; background: transparent;
+      color: var(--cream-soft); border-radius: 100px;
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.06em;
+      display: inline-grid; place-items: center; transition: background 0.2s, color 0.2s;
+    }
+    .lang-switch button:hover, .lang-switch a:hover { color: var(--cream); background: rgba(245, 241, 231, 0.08); }
+    .lang-switch button.is-active { background: var(--cream); color: var(--deep); }
+    .lang-switch .lang-ru { color: var(--gold); }
+    .menu-toggle {
+      display: none; width: 36px; height: 36px; border: 1px solid rgba(245, 241, 231, 0.24);
+      border-radius: 50%; background: transparent; color: var(--cream); place-items: center;
+    }
+    .menu-toggle span { width: 14px; height: 9px; display: flex; flex-direction: column; justify-content: space-between; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ""; display: block; height: 1px; background: currentColor; transition: transform 0.25s; }
+    .menu-toggle[aria-expanded="true"] span::before { transform: translateY(4px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-4px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; z-index: 115; left: 0; right: 0; top: 76px; bottom: 0;
+      background: var(--deep); color: var(--cream); padding: 36px 24px;
+    }
+    .mobile-nav.is-open { display: block; animation: fadeIn 0.25s ease; }
+    .mobile-nav nav { display: flex; flex-direction: column; }
+    .mobile-nav nav a {
+      font-family: var(--serif); font-size: 38px; line-height: 1.2;
+      padding: 19px 0; border-bottom: 1px solid var(--line-light);
+    }
+    .mobile-nav nav a .nav-arrow { float: right; color: var(--gold); font-size: 20px; }
+    .mobile-nav-footer { margin-top: 32px; display: flex; justify-content: space-between; gap: 20px; color: var(--cream-soft); }
+    .mobile-nav-footer a { color: var(--gold); }
+
+    /* ————— Ticker ————— */
+    .ticker {
+      background: var(--deep-2); color: var(--cream-soft); border-bottom: 1px solid var(--line-light);
+      height: 32px; display: flex; align-items: center; overflow: hidden;
+    }
+    .ticker-track { display: flex; width: max-content; animation: marquee 42s linear infinite; }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-group { display: flex; align-items: center; flex-shrink: 0; }
+    .ticker-item {
+      font-family: var(--mono); font-size: 8px; text-transform: uppercase;
+      letter-spacing: 0.17em; white-space: nowrap; padding: 0 26px;
+    }
+    .ticker-star { color: var(--rust); font-size: 11px; line-height: 1; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ————— Hero ————— */
+    .hero {
+      background:
+        radial-gradient(circle at 81% 17%, rgba(191, 75, 45, 0.17), transparent 31%),
+        radial-gradient(circle at 4% 100%, rgba(134, 151, 113, 0.12), transparent 30%),
+        var(--deep);
+      color: var(--cream); position: relative; overflow: hidden;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; opacity: 0.32; pointer-events: none;
+      background-image: radial-gradient(rgba(245, 241, 231, 0.5) 0.6px, transparent 0.8px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to right, transparent 18%, rgba(0,0,0,0.6) 58%, transparent 94%);
+      -webkit-mask-image: linear-gradient(to right, transparent 18%, rgba(0,0,0,0.6) 58%, transparent 94%);
+    }
+    .hero-watermark {
+      position: absolute; right: -6px; bottom: 10px; pointer-events: none; user-select: none;
+      font-family: var(--serif); font-size: clamp(150px, 22vw, 300px); line-height: 0.65;
+      color: rgba(245, 241, 231, 0.022); letter-spacing: -0.06em;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1.34fr) minmax(330px, 0.66fr);
+      gap: clamp(38px, 6vw, 100px); align-items: center;
+      padding-top: clamp(56px, 7vw, 98px); padding-bottom: 58px; position: relative; z-index: 1;
+    }
+    .hero-copy { max-width: 830px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--cream-soft);
+    }
+    .eyebrow::before { content: ""; width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--rust); box-shadow: 0 0 0 4px rgba(191, 75, 45, 0.11); }
+    .section-kicker {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 17px;
+      font-family: var(--mono); font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.16em; color: var(--rust);
+    }
+    .section-kicker::after { content: ""; width: 42px; height: 1px; background: currentColor; opacity: 0.55; }
+    .hero h1 {
+      margin: 25px 0 31px; font-family: var(--serif); font-weight: 400;
+      font-size: clamp(70px, 8.5vw, 124px); line-height: 0.84; letter-spacing: -0.035em;
+    }
+    .hero h1 .line { display: block; }
+    .hero h1 em { color: var(--gold); font-weight: 400; padding-right: 0.03em; }
+    .hero h1 .period { color: var(--rust); }
+    .hero-deck {
+      max-width: 510px; color: rgba(245, 241, 231, 0.68);
+      font-size: clamp(14px, 1.2vw, 16px); line-height: 1.72;
+    }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 23px; margin-top: 35px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: space-between; gap: 23px;
+      min-height: 50px; padding: 0 10px 0 19px; border: 1px solid transparent;
+      font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
+    }
+    .btn .btn-arrow {
+      width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
+      font-size: 15px; flex-shrink: 0; transition: transform 0.3s var(--ease);
+    }
+    .btn:hover .btn-arrow { transform: rotate(45deg); }
+    .btn-primary { background: var(--cream); color: var(--ink); }
+    .btn-primary .btn-arrow { background: var(--ink); color: var(--cream); }
+    .btn-primary:hover { background: var(--gold); }
+    .btn-ghost { color: var(--cream); border-color: rgba(245, 241, 231, 0.26); background: transparent; padding: 0 18px; }
+    .btn-ghost:hover { background: rgba(245, 241, 231, 0.08); border-color: rgba(245, 241, 231, 0.58); }
+    .text-action {
+      border: 0; border-bottom: 1px solid rgba(245, 241, 231, 0.36); background: none;
+      color: var(--cream); padding: 5px 0; font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 10px; transition: color 0.25s, border-color 0.25s;
+    }
+    .text-action:hover { color: var(--gold); border-color: var(--gold); }
+    .hero-aside { justify-self: end; width: min(100%, 385px); position: relative; }
+    .specimen {
+      position: relative; padding: 0 10px 10px; background: rgba(245, 241, 231, 0.035);
+      border: 1px solid rgba(245, 241, 231, 0.17);
+      transform: rotate(1.35deg); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.19);
+    }
+    .specimen-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 5px 11px; color: rgba(245, 241, 231, 0.55);
+      font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.13em; text-transform: uppercase;
+    }
+    .specimen-frame {
+      position: relative; border-radius: 190px 190px 0 0; overflow: hidden;
+      aspect-ratio: 4 / 5; background: var(--deep-3);
+    }
+    .specimen-frame img {
+      width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.15) sepia(0.12) contrast(1.05) brightness(0.82);
+      transition: transform 1.4s var(--ease), filter 0.6s;
+    }
+    .specimen:hover .specimen-frame img { transform: scale(1.035); filter: grayscale(0.05) sepia(0.05) contrast(1.05) brightness(0.9); }
+    .specimen-frame::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12, 16, 10, 0.75), transparent 49%, rgba(12, 16, 10, 0.12));
+    }
+    .specimen-tag {
+      position: absolute; z-index: 1; top: 25px; left: 24px;
+      background: rgba(18, 22, 15, 0.64); border: 1px solid rgba(245, 241, 231, 0.24);
+      color: var(--cream); backdrop-filter: blur(8px); padding: 6px 8px;
+      font-family: var(--mono); font-size: 7px; letter-spacing: 0.13em; text-transform: uppercase;
+    }
+    .specimen-caption {
+      position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 22px; color: var(--cream);
+    }
+    .specimen-caption .specimen-title { font-family: var(--serif); font-size: 31px; line-height: 0.98; font-weight: 400; }
+    .specimen-caption p {
+      margin-top: 8px; color: var(--cream-soft); font-family: var(--mono);
+      font-size: 7.5px; letter-spacing: 0.11em; text-transform: uppercase;
+    }
+    .specimen-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 5px 2px; color: rgba(245, 241, 231, 0.50);
+      font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .specimen-foot .dot { color: var(--rust); }
+    .seal {
+      position: absolute; z-index: 3; top: -27px; right: -23px; width: 116px; height: 116px;
+      border-radius: 50%; background: var(--cream); color: var(--ink);
+      display: grid; place-items: center; box-shadow: 0 10px 32px rgba(0,0,0,0.28);
+    }
+    .seal-ring { position: absolute; inset: 7px; width: calc(100% - 14px); height: calc(100% - 14px); animation: spin 28s linear infinite; }
+    .seal-ring text { font-family: var(--mono); font-size: 7px; letter-spacing: 1.9px; fill: var(--ink); text-transform: uppercase; }
+    .seal-star { font-family: var(--serif); color: var(--rust); font-size: 28px; line-height: 1; transform: translateY(-1px); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-light);
+      position: relative; z-index: 1;
+    }
+    .hero-stat { padding: 24px 28px 26px 0; border-right: 1px solid var(--line-light); }
+    .hero-stat:not(:first-child) { padding-left: 30px; }
+    .hero-stat:last-child { border-right: 0; }
+    .hero-stat dt {
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(245, 241, 231, 0.46);
+    }
+    .hero-stat dd {
+      margin-top: 5px; font-family: var(--serif); font-size: 33px; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--cream);
+    }
+    .hero-stat dd .accent-dot { color: var(--rust); font-family: var(--sans); font-size: 15px; vertical-align: 6px; margin-left: 5px; }
+
+    /* ————— Catalogue ————— */
+    .catalog { padding: clamp(70px, 9vw, 112px) 0 clamp(78px, 9vw, 112px); position: relative; }
+    .catalog::before {
+      content: ""; position: absolute; top: 0; left: 50%; width: min(var(--container), calc(100% - 72px));
+      transform: translateX(-50%); height: 1px; background: var(--ink); opacity: 0.16;
+    }
+    .catalog-head {
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px;
+      margin-bottom: 39px;
+    }
+    .catalog-head h2, .section-title {
+      font-family: var(--serif); font-size: clamp(52px, 6.2vw, 82px);
+      font-weight: 400; line-height: 0.9; letter-spacing: -0.035em;
+    }
+    .catalog-head h2 em, .section-title em { font-weight: 400; color: var(--rust); }
+    .catalog-sub { margin-top: 20px; color: var(--ink-soft); max-width: 500px; font-size: 14px; line-height: 1.7; }
+    .original-note {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 13px;
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
+    .original-note::before { content: "↗"; color: var(--rust); font-size: 11px; }
+    .original-note a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(25,27,20,0.3); color: var(--ink-soft); transition: color 0.2s; }
+    .original-note a:hover { color: var(--rust); }
+    .catalog-total { text-align: right; flex-shrink: 0; }
+    .catalog-total .num { display: block; font-family: var(--serif); font-size: clamp(55px, 7vw, 84px); line-height: 0.8; letter-spacing: -0.04em; }
+    .catalog-total .label { display: block; margin-top: 12px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+    .toolbar { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 15px 0; }
+    .toolbar-main { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .filters { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+    .filter-btn {
+      display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px;
+      background: transparent; border: 1px solid transparent; border-radius: 100px;
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.055em;
+      text-transform: uppercase; color: var(--ink-soft); white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .filter-btn .filter-count { color: var(--ink-faint); font-size: 7px; transition: color 0.2s; }
+    .filter-btn:hover { background: var(--paper-deep); color: var(--ink); }
+    .filter-btn.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .filter-btn.is-active .filter-count { color: rgba(240, 236, 226, 0.58); }
+    .toolbar-controls { display: flex; align-items: center; gap: 7px; margin-left: auto; }
+    .search-box {
+      position: relative; display: flex; align-items: center; height: 35px; min-width: 226px;
+      border-bottom: 1px solid rgba(25, 27, 20, 0.36); transition: border-color 0.2s;
+    }
+    .search-box:focus-within { border-color: var(--rust); }
+    .search-box svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--ink-faint); margin-right: 8px; }
+    .search-box input {
+      width: 100%; height: 100%; border: 0; outline: 0; background: transparent;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.01em; color: var(--ink);
+      min-width: 0;
+    }
+    .search-box input::placeholder { color: var(--ink-faint); opacity: 1; }
+    .search-box input::-webkit-search-cancel-button { appearance: none; -webkit-appearance: none; }
+    .search-clear {
+      display: none; flex-shrink: 0; width: 22px; height: 22px; border: 0; border-radius: 50%;
+      background: var(--paper-deep); color: var(--ink-soft); place-items: center;
+      font-size: 14px; line-height: 1;
+    }
+    .search-clear.is-visible { display: grid; }
+    .select-wrap { position: relative; display: flex; align-items: center; height: 35px; }
+    .select-wrap::after {
+      content: "⌄"; position: absolute; right: 3px; top: 50%; transform: translateY(-56%);
+      color: var(--ink-faint); pointer-events: none; font-size: 13px;
+    }
+    .select-wrap select {
+      appearance: none; -webkit-appearance: none; height: 100%; min-width: 122px;
+      border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink-soft);
+      font-family: var(--mono); font-size: 8px; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0 23px 0 9px; cursor: pointer;
+    }
+    .view-switch { display: flex; align-items: center; border: 1px solid var(--line); height: 35px; }
+    .view-btn {
+      width: 32px; height: 33px; display: grid; place-items: center;
+      border: 0; background: transparent; color: var(--ink-faint); transition: color 0.2s, background 0.2s;
+    }
+    .view-btn:hover { color: var(--ink); }
+    .view-btn.is-active { background: var(--ink); color: var(--paper); }
+    .view-btn svg { width: 14px; height: 14px; }
+    .toolbar-meta {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      margin-top: 15px; font-family: var(--mono); font-size: 8px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--ink-faint);
+    }
+    .toolbar-meta .result-count { color: var(--ink-soft); }
+    .toolbar-meta .search-hint { display: flex; align-items: center; gap: 7px; }
+    .search-hint kbd { border-color: var(--line); color: var(--ink-soft); background: transparent; }
+
+    .catalog-grid {
+      display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 24px 20px; margin-top: 27px; list-style: none;
+    }
+    .story-card { grid-column: span 4; min-width: 0; }
+    .story-card:nth-child(1) { grid-column: span 8; }
+    .story-card:nth-child(2) { grid-column: span 4; }
+    .story-card:nth-child(6), .story-card:nth-child(7) { grid-column: span 6; }
+    .story-link {
+      display: flex; flex-direction: column; height: 100%; min-height: 100%;
+      border: 1px solid var(--line); background: rgba(247, 243, 234, 0.5);
+      overflow: hidden; position: relative;
+      transition: background 0.3s, box-shadow 0.4s, border-color 0.3s, transform 0.4s var(--ease);
+    }
+    .story-link:hover { background: var(--paper-light); border-color: rgba(25,27,20,0.36); box-shadow: 0 20px 44px rgba(25, 27, 20, 0.09); transform: translateY(-3px); }
+    .story-media {
+      position: relative; overflow: hidden; aspect-ratio: 4 / 3; flex-shrink: 0;
+      background: var(--paper-deep); margin: 0;
+    }
+    .story-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(0.18) sepia(0.08) saturate(0.78) contrast(1.03);
+      transition: transform 0.95s var(--ease), filter 0.5s;
+    }
+    .story-link:hover .story-media img { transform: scale(1.055); filter: grayscale(0.03) sepia(0.02) saturate(1) contrast(1.04); }
+    .story-media::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to top, rgba(18,22,15,0.32), transparent 42%);
+    }
+    .story-number {
+      position: absolute; top: 10px; left: 10px; z-index: 1; padding: 5px 7px;
+      background: rgba(18, 22, 15, 0.78); border: 1px solid rgba(245, 241, 231, 0.16);
+      color: var(--cream); font-size: 7px; letter-spacing: 0.09em; backdrop-filter: blur(8px);
+    }
+    .ru-flag {
+      position: absolute; top: 10px; right: 10px; z-index: 1; padding: 5px 7px;
+      color: var(--cream); font-size: 7px; letter-spacing: 0.06em;
+      border: 1px solid rgba(245, 241, 231, 0.3); background: rgba(18, 22, 15, 0.42);
+      backdrop-filter: blur(8px);
+    }
+    .story-arrow {
+      position: absolute; right: 12px; bottom: 12px; z-index: 1;
+      width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--cream); color: var(--ink); font-size: 16px;
+      transform: translateY(5px); opacity: 0; transition: opacity 0.3s, transform 0.3s var(--ease), background 0.3s;
+    }
+    .story-link:hover .story-arrow { opacity: 1; transform: translateY(0); }
+    .story-arrow:hover { background: var(--gold); }
+    .story-copy { display: flex; flex-direction: column; flex-grow: 1; padding: 17px 18px 16px; min-height: 0; }
+    .story-meta {
+      display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 7.5px; line-height: 1.5;
+      letter-spacing: 0.09em; text-transform: uppercase; color: var(--rust);
+    }
+    .story-meta .meta-year { color: var(--ink-faint); }
+    .story-meta .meta-dash { color: rgba(25,27,20,0.28); }
+    .story-title {
+      margin-top: 7px; font-family: var(--serif); font-size: 29px; font-weight: 400;
+      line-height: 1.01; letter-spacing: -0.02em; color: var(--ink);
+    }
+    .story-desc {
+      color: var(--ink-soft); font-size: 11.5px; line-height: 1.62;
+      margin-top: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .story-deck {
+      display: none; margin-top: 8px; font-family: var(--serif); font-size: 20px;
+      line-height: 1.1; color: var(--rust); font-style: italic;
+    }
+    .story-footer {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      border-top: 1px solid var(--line); padding-top: 9px; margin-top: auto;
+      padding-top: 12px;
+    }
+    .story-cta {
+      display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
+      font-size: 7.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink);
+    }
+    .story-cta span { color: var(--rust); font-size: 12px; transition: transform 0.25s; }
+    .story-link:hover .story-cta span { transform: translate(2px, -2px); }
+    .story-year {
+      font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); white-space: nowrap;
+    }
+
+    /* First card: an editorial lead */
+    .story-card:nth-child(1) .story-link { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(250px, 0.95fr); }
+    .story-card:nth-child(1) .story-media { aspect-ratio: auto; height: 100%; min-height: 385px; }
+    .story-card:nth-child(1) .story-copy { justify-content: center; padding: 32px clamp(21px, 2.6vw, 35px); }
+    .story-card:nth-child(1) .story-title { font-size: clamp(38px, 4.3vw, 55px); margin-top: 12px; }
+    .story-card:nth-child(1) .story-deck { display: block; }
+    .story-card:nth-child(1) .story-desc { font-size: 13.5px; -webkit-line-clamp: 4; margin-top: 15px; }
+    .story-card:nth-child(1) .story-footer { margin-top: 23px; }
+    .story-card:nth-child(1) .story-arrow { opacity: 1; transform: none; right: 16px; bottom: 16px; }
+    .story-card:nth-child(6) .story-title, .story-card:nth-child(7) .story-title { font-size: 35px; }
+    .story-card:nth-child(6) .story-media, .story-card:nth-child(7) .story-media { aspect-ratio: 16 / 9; }
+
+    /* List view */
+    .catalog-grid[data-view="list"] {
+      display: block; border-top: 1px solid var(--line); margin-top: 27px;
+    }
+    .catalog-grid[data-view="list"] .story-card { grid-column: auto !important; }
+    .catalog-grid[data-view="list"] .story-link {
+      display: grid; grid-template-columns: 126px minmax(0, 1fr);
+      align-items: center; gap: 24px; border: 0; border-bottom: 1px solid var(--line);
+      background: transparent; box-shadow: none; transform: none; padding: 15px 5px;
+      min-height: 0;
+    }
+    .catalog-grid[data-view="list"] .story-link:hover { background: rgba(247, 243, 234, 0.7); transform: none; box-shadow: none; }
+    .catalog-grid[data-view="list"] .story-media { aspect-ratio: 4 / 3; width: 126px; min-height: 0; height: auto; }
+    .catalog-grid[data-view="list"] .story-media::after { display: none; }
+    .catalog-grid[data-view="list"] .story-number { top: 6px; left: 6px; padding: 3px 5px; }
+    .catalog-grid[data-view="list"] .ru-flag, .catalog-grid[data-view="list"] .story-arrow { display: none; }
+    .catalog-grid[data-view="list"] .story-copy { display: block; padding: 0; }
+    .catalog-grid[data-view="list"] .story-title { margin: 3px 0 5px; font-size: 29px; }
+    .catalog-grid[data-view="list"] .story-desc { display: none; }
+    .catalog-grid[data-view="list"] .story-deck { display: none; }
+    .catalog-grid[data-view="list"] .story-footer { border: 0; margin: 0; padding: 0; justify-content: flex-end; text-align: right; }
+    .catalog-grid[data-view="list"] .story-cta { font-size: 8px; }
+    .catalog-grid[data-view="list"] .story-year { display: none; }
+    .empty-state {
+      grid-column: 1 / -1; min-height: 270px; border: 1px dashed rgba(25,27,20,0.24);
+      display: grid; place-content: center; justify-items: center; text-align: center;
+      padding: 36px 24px; background: rgba(247, 243, 234, 0.4);
+    }
+    .empty-state .empty-star { color: var(--rust); font-family: var(--serif); font-size: 52px; line-height: 1; }
+    .empty-state h3 { font-family: var(--serif); font-size: 31px; font-weight: 400; margin-top: 10px; }
+    .empty-state p { color: var(--ink-soft); font-size: 13px; margin-top: 7px; }
+    .empty-state button { margin-top: 18px; }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ————— Upcoming ————— */
+    .upcoming { background: var(--deep); color: var(--cream); padding: clamp(70px, 9vw, 104px) 0; position: relative; overflow: hidden; }
+    .upcoming::after {
+      content: "NEXT"; position: absolute; right: -20px; top: 15px;
+      font-family: var(--serif); font-size: clamp(130px, 20vw, 250px); line-height: 0.7;
+      color: transparent; -webkit-text-stroke: 1px rgba(245, 241, 231, 0.065);
+      pointer-events: none; user-select: none;
+    }
+    .upcoming .section-kicker { color: var(--gold); }
+    .upcoming-grid { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: clamp(40px, 9vw, 130px); align-items: start; position: relative; z-index: 1; }
+    .upcoming-intro .section-title { color: var(--cream); }
+    .upcoming-intro .section-title em { color: var(--gold); }
+    .upcoming-copy { color: var(--cream-soft); max-width: 330px; font-size: 13px; line-height: 1.75; margin-top: 23px; }
+    .upcoming-stamp {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 35px; padding: 9px 12px;
+      border: 1px solid rgba(245, 241, 231, 0.22); color: var(--cream-soft);
+      font-family: var(--mono); font-size: 8px; text-transform: uppercase; letter-spacing: 0.11em;
+    }
+    .upcoming-stamp span { color: var(--gold); }
+    .soon-list { list-style: none; border-top: 1px solid var(--line-light); }
+    .soon-row {
+      width: 100%; display: grid; grid-template-columns: 38px minmax(0, 1fr) auto;
+      align-items: center; gap: 15px; min-height: 84px; padding: 15px 0;
+      border: 0; border-bottom: 1px solid var(--line-light); background: transparent;
+      color: var(--cream); text-align: left; transition: padding 0.3s var(--ease), background 0.25s;
+    }
+    .soon-row:hover { padding-left: 8px; background: rgba(245, 241, 231, 0.035); }
+    .soon-num { font-family: var(--mono); font-size: 8px; color: rgba(245, 241, 231, 0.38); letter-spacing: 0.08em; align-self: start; padding-top: 7px; }
+    .soon-title { font-family: var(--serif); font-size: clamp(24px, 2.8vw, 35px); font-weight: 400; line-height: 1.08; color: var(--cream); transition: color 0.25s; }
+    .soon-row:hover .soon-title { color: var(--gold); }
+    .soon-status {
+      display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(245, 241, 231, 0.2);
+      padding: 5px 8px; font-family: var(--mono); font-size: 7px; letter-spacing: 0.07em;
+      text-transform: uppercase; color: rgba(245, 241, 231, 0.55); white-space: nowrap;
+    }
+    .soon-status::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+    .soon-row.locked .soon-status::before { background: var(--rust); }
+    .soon-row.locked .soon-title { color: rgba(245, 241, 231, 0.62); }
+    .soon-hint { margin-top: 15px; color: rgba(245, 241, 231, 0.35); font-family: var(--mono); font-size: 8px; letter-spacing: 0.04em; }
+
+    /* ————— About ————— */
+    .about { padding: clamp(72px, 9vw, 118px) 0; }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(42px, 8vw, 120px); }
+    .about-visual { max-width: 390px; }
+    .about-figure { margin-top: 31px; position: relative; }
+    .about-figure img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; filter: grayscale(0.48) sepia(0.12) contrast(1.03); }
+    .about-figure::before {
+      content: ""; position: absolute; inset: 9px -9px -9px 9px; border: 1px solid var(--line); z-index: -1;
+    }
+    .about-figure figcaption { border-bottom: 1px solid var(--line); padding: 9px 0 10px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+    .about-figure figcaption span { float: right; color: var(--rust); }
+    .about-copy .lead {
+      font-family: var(--serif); font-size: clamp(27px, 3.1vw, 41px); line-height: 1.1;
+      letter-spacing: -0.018em; max-width: 670px;
+    }
+    .about-copy .lead em { color: var(--rust); font-style: italic; }
+    .about-body { margin-top: 24px; color: var(--ink-soft); max-width: 600px; font-size: 14px; line-height: 1.8; }
+    .about-body p + p { margin-top: 13px; }
+    .about-body a { border-bottom: 1px solid rgba(25,27,20,0.35); color: var(--ink); transition: color 0.2s, border-color 0.2s; }
+    .about-body a:hover { color: var(--rust); border-color: var(--rust); }
+    .quote {
+      margin-top: 30px; padding: 18px 0 18px 22px; border-left: 2px solid var(--rust);
+      font-family: var(--serif); font-size: clamp(25px, 2.5vw, 33px); line-height: 1.12;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .quote footer { margin-top: 10px; font-family: var(--mono); font-size: 8px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); }
+    .principles { border-top: 1px solid var(--line); margin-top: 36px; }
+    .principle { display: grid; grid-template-columns: 37px minmax(0, 1fr) 1.5fr; gap: 15px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .principle-num { font-family: var(--mono); font-size: 8px; color: var(--rust); padding-top: 4px; }
+    .principle h3 { font-family: var(--serif); font-size: 23px; line-height: 1.06; font-weight: 400; }
+    .principle p { color: var(--ink-soft); font-size: 11.5px; line-height: 1.65; }
+    .about-cta {
+      margin-top: 30px; padding: 21px 22px; background: var(--ink); color: var(--cream);
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    }
+    .about-cta p { font-family: var(--serif); font-size: 25px; line-height: 1.05; }
+    .about-cta button {
+      border: 1px solid rgba(245, 241, 231, 0.32); color: var(--cream); background: transparent;
+      min-height: 37px; padding: 0 12px; font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .about-cta button:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+    /* ————— Footer ————— */
+    .site-footer { background: var(--deep); color: var(--cream); padding: 68px 0 25px; position: relative; overflow: hidden; }
+    .footer-top { display: grid; grid-template-columns: 1.7fr 0.8fr 0.9fr 1.1fr; gap: clamp(28px, 5vw, 78px); }
+    .footer-statement { font-family: var(--serif); font-size: clamp(37px, 4.2vw, 58px); line-height: 0.96; letter-spacing: -0.025em; }
+    .footer-statement em { color: var(--gold); font-weight: 400; }
+    .footer-desc { color: var(--cream-soft); font-size: 12px; line-height: 1.75; max-width: 280px; margin-top: 20px; }
+    .footer-col-title { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245, 241, 231, 0.38); margin-bottom: 17px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+    .footer-links a, .footer-links button {
+      color: var(--cream-soft); border: 0; background: transparent; padding: 0;
+      font-size: 12px; line-height: 1.5; text-align: left; transition: color 0.2s;
+    }
+    .footer-links a:hover, .footer-links button:hover { color: var(--gold); }
+    .footer-links .ru-external { color: var(--gold); }
+    .footer-links button.is-current { color: var(--cream); }
+    .footer-col p { color: rgba(245, 241, 231, 0.48); font-size: 11px; line-height: 1.75; }
+    .footer-col p + p { margin-top: 9px; }
+    .footer-col code { font-family: var(--mono); font-size: 8px; color: rgba(245, 241, 231, 0.62); }
+    .footer-original {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+      border-bottom: 1px solid rgba(210, 171, 125, 0.38); padding-bottom: 4px;
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+    }
+    .footer-original:hover { color: var(--cream); border-color: var(--cream); }
+    .footer-mark {
+      margin-top: clamp(45px, 7vw, 78px); border-top: 1px solid var(--line-light); padding-top: 18px;
+      font-family: var(--serif); font-size: clamp(52px, 10.7vw, 150px); line-height: 0.72;
+      letter-spacing: -0.045em; color: rgba(245, 241, 231, 0.13); white-space: nowrap;
+    }
+    .footer-mark span { color: rgba(191, 75, 45, 0.58); }
+    .footer-bottom {
+      border-top: 1px solid var(--line-light); margin-top: 32px; padding-top: 16px;
+      display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(245, 241, 231, 0.35);
+    }
+    .footer-bottom a { transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--cream); }
+    .footer-bottom .to-top { display: inline-flex; gap: 7px; align-items: center; color: var(--cream-soft); }
+
+    /* ————— Toast ————— */
+    .toast {
+      position: fixed; z-index: 250; left: 50%; bottom: 24px; transform: translate(-50%, 14px);
+      max-width: calc(100% - 32px); background: var(--cream); color: var(--ink);
+      border: 1px solid rgba(25, 27, 20, 0.24); box-shadow: 0 14px 36px rgba(0,0,0,0.17);
+      padding: 12px 16px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.07em;
+      text-transform: uppercase; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+      text-align: center;
+    }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (max-width: 1150px) {
+      .container { width: min(var(--container), calc(100% - 48px)); }
+      .main-nav { gap: 18px; }
+      .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr); gap: 40px; }
+      .hero h1 { font-size: clamp(64px, 8.2vw, 98px); }
+      .story-card:nth-child(n) { grid-column: span 6 !important; }
+      .story-card:nth-child(1) { grid-column: span 12 !important; }
+      .story-card:nth-child(1) .story-link { grid-template-columns: minmax(0, 1fr) minmax(270px, 0.9fr); }
+      .story-card:nth-child(1) .story-media { min-height: 360px; }
+    }
+    @media (max-width: 980px) {
+      .main-nav { display: none; }
+      .menu-toggle { display: grid; }
+      .header-actions { margin-left: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 50px; padding-top: 52px; }
+      .hero-aside { justify-self: start; margin-left: 8%; }
+      .hero h1 { font-size: clamp(70px, 12vw, 112px); }
+      .hero-deck { max-width: 580px; }
+      .upcoming-grid { grid-template-columns: 1fr; gap: 38px; }
+      .upcoming-copy { max-width: 500px; }
+      .upcoming-stamp { margin-top: 23px; }
+      .about-grid { grid-template-columns: 1fr; gap: 43px; }
+      .about-visual { max-width: none; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 28px; align-items: end; }
+      .about-visual .section-kicker { margin-bottom: 12px; }
+      .about-visual .section-title { font-size: clamp(48px, 8vw, 68px); }
+      .about-figure { margin-top: 0; }
+      .principles { margin-top: 25px; }
+      .footer-top { grid-template-columns: 1.5fr 1fr 1fr; }
+      .footer-top > :last-child { grid-column: 2 / 4; }
+      .footer-desc { max-width: 330px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: calc(100% - 32px); }
+      .header-inner { min-height: 66px; gap: 10px; }
+      .mobile-nav { top: 66px; padding: 24px; }
+      .brand-mark { width: 31px; height: 31px; }
+      .brand-mark svg { width: 15px; height: 15px; }
+      .brand-name { font-size: 12px; letter-spacing: 0.11em; }
+      .brand-sub { display: none; }
+      .search-trigger { width: 35px; height: 35px; padding: 0; justify-content: center; border-radius: 50%; }
+      .search-trigger svg { width: 15px; height: 15px; }
+      .search-trigger .mono, .search-trigger kbd { display: none; }
+      .lang-switch { height: 34px; }
+      .lang-switch button, .lang-switch a { height: 28px; min-width: 27px; padding: 0 5px; font-size: 7px; }
+      .menu-toggle { width: 35px; height: 35px; }
+      .ticker { height: 29px; }
+      .hero-grid { padding-top: 43px; padding-bottom: 38px; }
+      .hero h1 { font-size: clamp(57px, 15.5vw, 92px); margin-top: 20px; margin-bottom: 24px; }
+      .hero-aside { width: min(89%, 350px); margin-left: 0; justify-self: center; }
+      .specimen { transform: rotate(0.8deg); }
+      .seal { width: 94px; height: 94px; top: -21px; right: -12px; }
+      .specimen-caption h3 { font-size: 27px; }
+      .hero-actions { gap: 15px; margin-top: 26px; }
+      .btn { min-height: 46px; font-size: 8px; gap: 17px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-stat { padding: 15px 0 !important; border-right: 0; border-bottom: 1px solid var(--line-light); display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+      .hero-stat:last-child { border-bottom: 0; padding-bottom: 22px !important; }
+      .hero-stat dd { font-size: 28px; margin-top: 0; }
+      .catalog { padding-top: 59px; padding-bottom: 66px; }
+      .catalog .container::before { display: none; }
+      .catalog-head { grid-template-columns: 1fr auto; gap: 20px; margin-bottom: 27px; }
+      .catalog-head h2 { font-size: clamp(49px, 15vw, 67px); }
+      .catalog-sub { font-size: 12.5px; margin-top: 15px; }
+      .catalog-total .num { font-size: 54px; }
+      .catalog-total .label { font-size: 7px; margin-top: 8px; }
+      .toolbar { padding: 13px 0; }
+      .toolbar-main { gap: 13px; }
+      .filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; scrollbar-width: none; }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex: 0 0 auto; }
+      .toolbar-controls { width: 100%; margin-left: 0; }
+      .search-box { flex: 1 1 auto; min-width: 0; }
+      .search-box input { font-size: 16px; }
+      .select-wrap select { min-width: 115px; }
+      .toolbar-meta { margin-top: 12px; font-size: 7px; }
+      .toolbar-meta .search-hint { display: none; }
+      .catalog-grid { grid-template-columns: 1fr; gap: 17px; margin-top: 20px; }
+      .story-card:nth-child(n) { grid-column: auto !important; }
+      .story-card:nth-child(1) .story-link { display: flex; }
+      .story-card:nth-child(1) .story-media { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
+      .story-card:nth-child(1) .story-copy { padding: 18px 18px 16px; }
+      .story-card:nth-child(1) .story-title { font-size: 37px; }
+      .story-card:nth-child(1) .story-desc { font-size: 12px; -webkit-line-clamp: 3; margin-top: 9px; }
+      .story-card:nth-child(1) .story-footer { margin-top: 17px; }
+      .story-media, .story-card:nth-child(6) .story-media, .story-card:nth-child(7) .story-media { aspect-ratio: 16 / 10; }
+      .story-title, .story-card:nth-child(6) .story-title, .story-card:nth-child(7) .story-title { font-size: 31px; }
+      .story-copy { padding: 15px 16px 15px; }
+      .story-desc { font-size: 11.5px; }
+      .story-card:nth-child(1) .story-arrow { opacity: 1; transform: none; }
+      .catalog-grid[data-view="list"] .story-link { grid-template-columns: 83px minmax(0, 1fr); gap: 13px; padding: 12px 0; }
+      .catalog-grid[data-view="list"] .story-media { width: 83px; }
+      .catalog-grid[data-view="list"] .story-title { font-size: 24px; }
+      .catalog-grid[data-view="list"] .story-cta { font-size: 0; }
+      .catalog-grid[data-view="list"] .story-cta span { font-size: 15px; }
+      .upcoming { padding: 63px 0; }
+      .upcoming-intro .section-title, .section-title { font-size: clamp(49px, 14vw, 67px); }
+      .upcoming::after { font-size: 120px; opacity: 0.64; }
+      .soon-row { grid-template-columns: 27px minmax(0, 1fr); gap: 9px; min-height: 72px; }
+      .soon-status { grid-column: 2; justify-self: start; margin-top: -4px; }
+      .soon-title { font-size: 27px; }
+      .about { padding: 63px 0; }
+      .about-visual { display: block; }
+      .about-visual .section-title { font-size: clamp(49px, 14vw, 67px); }
+      .about-figure { margin-top: 25px; max-width: 400px; }
+      .about-copy .lead { font-size: 28px; }
+      .about-body { font-size: 13px; }
+      .principle { grid-template-columns: 28px 1fr; gap: 7px 10px; }
+      .principle p { grid-column: 2; font-size: 11.5px; }
+      .about-cta { align-items: flex-start; flex-direction: column; }
+      .about-cta p { font-size: 27px; }
+      .site-footer { padding-top: 53px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 31px 25px; }
+      .footer-top > :first-child { grid-column: 1 / -1; }
+      .footer-top > :last-child { grid-column: 1 / -1; }
+      .footer-mark { font-size: 14vw; overflow: hidden; }
+      .footer-bottom { gap: 10px; }
+    }
+    @media (max-width: 440px) {
+      .search-trigger { display: none; }
+      .lang-switch .lang-ru { display: none; }
+      .hero h1 { font-size: 15.4vw; }
+      .catalog-total .num { font-size: 45px; }
+      .catalog-total .label { max-width: 57px; text-align: right; }
+      .toolbar-controls { flex-wrap: wrap; }
+      .search-box { flex-basis: 100%; order: 0; }
+      .select-wrap { order: 1; }
+      .view-switch { order: 2; margin-left: auto; }
+      .header-inner { gap: 7px; }
+      .header-actions { gap: 7px; }
+      .btn { width: 100%; }
+      .hero-actions .text-action { margin-left: 2px; }
+      .catalog-head { grid-template-columns: 1fr; }
+      .catalog-total { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; text-align: left; border-top: 1px solid var(--line); padding-top: 13px; }
+      .catalog-total .num { font-size: 42px; }
+      .catalog-total .label { max-width: none; margin: 0; }
+      .principle { grid-template-columns: 23px 1fr; }
+      .footer-mark { font-size: 15vw; }
+      .footer-top { gap: 27px 18px; }
+    }
+    /* Keep every list row compact, including the normally featured lead card */
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-link {
+      display: grid; grid-template-columns: 126px minmax(0, 1fr); align-items: center;
+      gap: 24px; border: 0; border-bottom: 1px solid var(--line);
+      background: transparent; box-shadow: none; transform: none; padding: 15px 5px; min-height: 0;
+    }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-media {
+      aspect-ratio: 4 / 3; width: 126px; min-height: 0; height: auto;
+    }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-copy {
+      display: block; padding: 0;
+    }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-title {
+      font-size: 29px; margin: 3px 0 5px;
+    }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-desc,
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-deck { display: none; }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-footer {
+      border: 0; margin: 0; padding: 0; justify-content: flex-end; text-align: right;
+    }
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-arrow,
+    .catalog-grid[data-view="list"] .story-card:nth-child(1) .ru-flag { display: none; }
+    @media (max-width: 760px) {
+      .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-link {
+        grid-template-columns: 83px minmax(0, 1fr); gap: 13px; padding: 12px 0;
+      }
+      .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-media { width: 83px; }
+      .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-title { font-size: 24px; }
+      .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-cta { font-size: 0; }
+      .catalog-grid[data-view="list"] .story-card:nth-child(1) .story-cta span { font-size: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="sr-skip" href="#catalog" data-i18n="a11y.skip">Skip to the catalogue</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Untold Archive — back to top" data-i18n-aria="brand.aria">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M12 1.8v20.4M1.8 12h20.4M4.8 4.8l14.4 14.4M19.2 4.8 4.8 19.2"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">Untold Archive</span>
+          <span class="brand-sub" data-i18n="brand.sub">A catalogue of missing endings</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation" data-i18n-aria="nav.primary">
+        <a href="#catalog" data-i18n="nav.index">The index</a>
+        <a href="#upcoming" data-i18n="nav.soon">In preparation</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="search-trigger" id="jumpSearch" type="button" data-i18n-aria="nav.searchAria" aria-label="Go to search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="10.7" cy="10.7" r="6.5"></circle><path d="m16 16 4.5 4.5"></path>
+          </svg>
+          <span class="mono" data-i18n="nav.search">Search</span>
+          <kbd>/</kbd>
+        </button>
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.group">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="de">DE</button>
+          <a class="lang-ru" href="https://untoldarchive.com/" target="_blank" rel="noopener noreferrer" aria-label="Russian original edition">RU ↗</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="mobileNav" aria-expanded="false" data-i18n-aria="nav.menuAria" aria-label="Open menu">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" data-i18n-aria="nav.mobile">
+    <nav>
+      <a href="#catalog"><span data-i18n="nav.index">The index</span><span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#upcoming"><span data-i18n="nav.soon">In preparation</span><span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#about"><span data-i18n="nav.about">About</span><span class="nav-arrow" aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <div class="mono">Untold Archive · Vol. I</div>
+      <a href="https://untoldarchive.com/" target="_blank" rel="noopener noreferrer" class="mono" data-i18n="nav.russianShort">RU / Russian original ↗</a>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-stars" aria-hidden="true"></div>
+      <div class="hero-watermark" aria-hidden="true">01</div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="hero.eyebrow">An independent index of unresolved stories</p>
+            <h1 id="heroTitle">Archive of<br><em>untold</em><br>stories<span class="period">.</span></h1>
+            <p class="hero-deck" data-i18n="hero.deck">Unresolved mysteries, landmark investigations, space, and cinema. Each entry opens a separate website — its own story, facts, and theories.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#catalog">
+                <span data-i18n="hero.browse">Browse all 13 files</span>
+                <span class="btn-arrow" aria-hidden="true">↘</span>
+              </a>
+              <button class="text-action" id="heroRandom" type="button">
+                <span data-i18n="hero.random">Open a random file</span>
+                <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <aside class="hero-aside" aria-label="Featured archive plate" data-i18n-aria="hero.featuredAria">
+            <div class="specimen">
+              <div class="seal" aria-hidden="true">
+                <svg class="seal-ring" viewBox="0 0 120 120">
+                  <defs><path id="sealPath" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+                  <text><textPath href="#sealPath">UNTOLD ARCHIVE · OPEN FILE · EST. 2026 ·</textPath></text>
+                </svg>
+                <span class="seal-star">✳</span>
+              </div>
+              <div class="specimen-head">
+                <span data-i18n="hero.plateTop">Plate 001 / Northern Urals</span>
+                <span>UA—01</span>
+              </div>
+              <div class="specimen-frame">
+                <img src="https://images.pexels.com/photos/32792146/pexels-photo-32792146.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=1125" alt="A beam of light breaking through clouds over a vast arctic landscape" width="900" height="1125" onerror="this.style.opacity=0">
+                <span class="specimen-tag" data-i18n="hero.featured">Featured acquisition</span>
+                <div class="specimen-caption">
+                  <p class="specimen-title" data-i18n="hero.plateTitle">The Mountain of the Dead</p>
+                  <p data-i18n="hero.plateMeta">Dyatlov Pass · 1959</p>
+                </div>
+              </div>
+              <div class="specimen-foot">
+                <span data-i18n="hero.note">One story. One website.</span>
+                <span><span class="dot">●</span>&nbsp; <span data-i18n="hero.open">Open</span></span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <dl class="hero-stats">
+          <div class="hero-stat">
+            <dt data-i18n="stats.items">materials</dt>
+            <dd>13<span class="accent-dot">●</span></dd>
+          </div>
+          <div class="hero-stat">
+            <dt data-i18n="stats.sections">sections</dt>
+            <dd>05</dd>
+          </div>
+          <div class="hero-stat">
+            <dt data-i18n="stats.latest">latest entry</dt>
+            <dd data-i18n="stats.latestValue">Atlantis</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalog" aria-labelledby="catalogTitle">
+      <div class="container">
+        <div class="catalog-head">
+          <div>
+            <p class="section-kicker" data-i18n="cat.kicker">The index / Volume I</p>
+            <h2 id="catalogTitle" data-i18n="cat.title">The catalogue</h2>
+            <p class="catalog-sub" data-i18n="cat.sub">Thirteen independent files. Find a story by title, section, or moment in time.</p>
+            <p class="original-note"><span data-i18n="cat.note">Each file opens the original Russian edition.</span> <a href="https://untoldarchive.com/" target="_blank" rel="noopener noreferrer" data-i18n="cat.noteLink">Russian archive</a></p>
+          </div>
+          <div class="catalog-total" id="catalogTotal" aria-label="13 materials in the archive">
+            <span class="num">13</span>
+            <span class="label" data-i18n="cat.totalLabel">files in the archive</span>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar-main">
+            <div class="filters" id="filters" role="group" aria-label="Filter by section"></div>
+            <div class="toolbar-controls">
+              <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="10.7" cy="10.7" r="6.5"></circle><path d="m16 16 4.5 4.5"></path>
+                </svg>
+                <label class="sr-only" for="searchInput" data-i18n="cat.search">Search the catalogue</label>
+                <input id="searchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Search title, section, or year">
+                <button class="search-clear" id="searchClear" type="button" aria-label="Clear search">×</button>
+              </div>
+              <div class="select-wrap">
+                <label class="sr-only" for="sortSelect" data-i18n="cat.sort">Sort</label>
+                <select id="sortSelect"></select>
+              </div>
+              <div class="view-switch" role="group" aria-label="View" data-i18n-aria="cat.viewLabel">
+                <button class="view-btn is-active" id="gridView" type="button" data-view="grid" aria-pressed="true" aria-label="Grid view">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                    <rect x="1" y="1" width="5.5" height="5.5"/><rect x="9.5" y="1" width="5.5" height="5.5"/><rect x="1" y="9.5" width="5.5" height="5.5"/><rect x="9.5" y="9.5" width="5.5" height="5.5"/>
+                  </svg>
+                </button>
+                <button class="view-btn" id="listView" type="button" data-view="list" aria-pressed="false" aria-label="List view">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                    <path d="M1 2.5h14M1 8h14M1 13.5h14"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="toolbar-meta">
+            <span class="result-count" id="resultsMeta" aria-live="polite">13 files</span>
+            <span class="search-hint"><kbd>/</kbd> <span data-i18n="cat.shortcut">to jump to search</span></span>
+          </div>
+        </div>
+
+        <ul class="catalog-grid" id="grid" data-view="grid"></ul>
+      </div>
+    </section>
+
+    <section class="upcoming" id="upcoming" aria-labelledby="upcomingTitle">
+      <div class="container">
+        <div class="upcoming-grid">
+          <div class="upcoming-intro">
+            <p class="section-kicker" data-i18n="soon.kicker">Next in the archive</p>
+            <h2 class="section-title" id="upcomingTitle" data-i18n-html="soon.title">In <em>preparation.</em></h2>
+            <p class="upcoming-copy" data-i18n="soon.copy">The archive keeps growing. New files are added to the end of the catalogue.</p>
+            <div class="upcoming-stamp"><span>✳</span> <span data-i18n="soon.stamp">Four files under seal</span></div>
+          </div>
+          <div>
+            <ul class="soon-list" id="soonList"></ul>
+            <p class="soon-hint" data-i18n="soon.hint">Click an unopened file to see its status.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual">
+            <p class="section-kicker" data-i18n="about.kicker">About the project</p>
+            <h2 class="section-title" id="aboutTitle" data-i18n-html="about.title">Stories without<br><em>a final page.</em></h2>
+            <figure class="about-figure">
+              <img src="https://images.pexels.com/photos/40212117/pexels-photo-40212117.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=720" alt="A visitor examining vintage photographs in an archive exhibition" width="900" height="720" loading="lazy" onerror="this.style.opacity=0">
+              <figcaption><span data-i18n="about.photoCaption">The archive is a place, not a verdict.</span><span>Est. 2026</span></figcaption>
+            </figure>
+          </div>
+          <div class="about-copy">
+            <p class="lead" data-i18n-html="about.lead">Untold Archive is a collection of websites about stories that have never reached a final line — and about <em>worlds worth returning to.</em></p>
+            <div class="about-body">
+              <p data-i18n-html="about.body1">One subject, one website. This page is the index: find a story by title, section, or date, then follow the link to read. The originals are published in Russian for now; the English and German editions are reading guides to the same files.</p>
+              <p data-i18n-html="about.body2">Every file keeps its source material, its open questions, and its own point of view. No invented endings — only the evidence, the versions, and the space between them.</p>
+            </div>
+            <blockquote class="quote">
+              <p data-i18n="about.quote">“History is not a closed book. It is an archive with missing pages.”</p>
+              <footer data-i18n="about.quoteBy">The editors</footer>
+            </blockquote>
+            <div class="principles">
+              <div class="principle">
+                <span class="principle-num">01</span>
+                <h3 data-i18n="about.p1title">One story, one website.</h3>
+                <p data-i18n="about.p1body">Each file is a world of its own — its own design, sources, and point of view.</p>
+              </div>
+              <div class="principle">
+                <span class="principle-num">02</span>
+                <h3 data-i18n="about.p2title">A map, not a copy.</h3>
+                <p data-i18n="about.p2body">This page brings the collection together, then opens the full story.</p>
+              </div>
+              <div class="principle">
+                <span class="principle-num">03</span>
+                <h3 data-i18n="about.p3title">Questions stay open.</h3>
+                <p data-i18n="about.p3body">No forced verdicts. We collect facts, versions, and contradictions — you draw your own conclusions.</p>
+              </div>
+            </div>
+            <div class="about-cta">
+              <p data-i18n="about.ctaText">Not sure where to begin?</p>
+              <button type="button" id="aboutRandom" data-i18n="hero.random">Open a random file</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <p class="footer-statement" data-i18n-html="footer.statement">One story.<br><em>One website.</em></p>
+          <p class="footer-desc" data-i18n="footer.desc">An independent archive of unresolved stories, quiet obsessions, and worlds worth revisiting.</p>
+          <a class="footer-original" href="https://untoldarchive.com/" target="_blank" rel="noopener noreferrer" data-i18n="footer.original">Russian original ↗</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title" data-i18n="footer.explore">Explore</p>
+          <ul class="footer-links">
+            <li><a href="#catalog" data-i18n="nav.index">The index</a></li>
+            <li><a href="#upcoming" data-i18n="nav.soon">In preparation</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#catalog" id="footerSearch" data-i18n="nav.search">Search</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title" data-i18n="footer.languages">Languages</p>
+          <ul class="footer-links">
+            <li><button type="button" data-lang="en">English</button></li>
+            <li><button type="button" data-lang="de">Deutsch</button></li>
+            <li><a class="ru-external" href="https://untoldarchive.com/" target="_blank" rel="noopener noreferrer">Русский ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title" data-i18n="footer.colophon">Colophon</p>
+          <p data-i18n="footer.tech">Single-file edition · HTML / CSS / JS</p>
+          <p data-i18n="footer.photo">Photography via Pexels</p>
+          <p data-i18n="footer.volume">Vol. I · Thirteen files · 2026</p>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">UNTOLD ARCHIVE<span>.</span></div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 Untold Archive</span>
+        <span data-i18n="footer.made">Built for the curious.</span>
+        <a class="to-top" href="#top"><span data-i18n="footer.top">Back to top</span> ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const IMG = {
+        dyatlov: "https://images.pexels.com/photos/20368179/pexels-photo-20368179.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1100&h=825",
+        earhart: "https://images.pexels.com/photos/37490057/pexels-photo-37490057.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        maryCeleste: "https://images.pexels.com/photos/6195223/pexels-photo-6195223.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        kennedy: "https://images.pexels.com/photos/8382083/pexels-photo-8382083.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        franklin: "https://images.pexels.com/photos/5022699/pexels-photo-5022699.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        alexander: "https://images.pexels.com/photos/38861117/pexels-photo-38861117.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        blackDahlia: "https://images.pexels.com/photos/104707/pexels-photo-104707.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        universe: "https://images.pexels.com/photos/6074272/pexels-photo-6074272.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        interstellar: "https://images.pexels.com/photos/37149440/pexels-photo-37149440.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        avatar1: "https://images.pexels.com/photos/38188604/pexels-photo-38188604.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        avatar2: "https://images.pexels.com/photos/17681765/pexels-photo-17681765.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        avatar3: "https://images.pexels.com/photos/13282926/pexels-photo-13282926.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750",
+        atlantis: "https://images.pexels.com/photos/39457892/pexels-photo-39457892.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=750"
+      };
+
+      const STORIES = [
+        {
+          id: "dyatlov", num: "001", section: "mysteries", year: 1959,
+          yearLabel: { en: "1959", de: "1959" },
+          url: "https://untoldarchive.com/TheDyatlovPassIncident/", img: IMG.dyatlov,
+          title: { en: "Dyatlov Pass", de: "Der Djatlow-Pass" },
+          deck: { en: "The Mountain of the Dead", de: "Der Berg der Toten" },
+          desc: {
+            en: "Nine hikers in Igor Dyatlov’s group died on the northern Urals on the night of 2 February 1959. The cause is still debated.",
+            de: "Neun Wanderer der Gruppe um Igor Djatlow starben in der Nacht zum 2. Februar 1959 im Nordural. Über die Ursache wird bis heute gestritten."
+          }
+        },
+        {
+          id: "earhart", num: "002", section: "mysteries", year: 1937,
+          yearLabel: { en: "1937", de: "1937" },
+          url: "https://untoldarchive.com/DisappearanceOfAmeliaEarhart/", img: IMG.earhart,
+          title: { en: "The disappearance of Amelia Earhart", de: "Das Verschwinden von Amelia Earhart" },
+          deck: { en: "An archival investigation", de: "Eine Archivrecherche" },
+          desc: {
+            en: "On 2 July 1937, the Lockheed Electra vanished over the Pacific on its way to Howland Island. Neither aircraft nor crew was ever found.",
+            de: "Am 2. Juli 1937 verschwand die Lockheed Electra über dem Pazifik auf dem Weg zur Howlandinsel. Flugzeug und Besatzung wurden nie gefunden."
+          }
+        },
+        {
+          id: "mary-celeste", num: "003", section: "mysteries", year: 1872,
+          yearLabel: { en: "1872", de: "1872" },
+          url: "https://untoldarchive.com/MaryCeleste/", img: IMG.maryCeleste,
+          title: { en: "The Mary Celeste", de: "Die Mary Celeste" },
+          deck: { en: "The ship found without a crew", de: "Das Schiff ohne Besatzung" },
+          desc: {
+            en: "In December 1872, the brigantine was found in the Atlantic under sail with its cargo intact — and without a single person aboard.",
+            de: "Im Dezember 1872 wurde die Brigantine im Atlantik unter Segeln und mit voller Ladung gefunden – aber ohne einen einzigen Menschen an Bord."
+          }
+        },
+        {
+          id: "kennedy", num: "004", section: "investigations", year: 1963,
+          yearLabel: { en: "1963", de: "1963" },
+          url: "https://untoldarchive.com/JohnFitzgeraldKennedy/", img: IMG.kennedy,
+          title: { en: "The Kennedy files", de: "Die Akte Kennedy" },
+          deck: { en: "Dallas, 22 November 1963", de: "Dallas, 22. November 1963" },
+          desc: {
+            en: "Dallas, 22 November 1963. Shots on Dealey Plaza, the Warren Commission, and questions that are still being answered.",
+            de: "Dallas, 22. November 1963. Schüsse am Dealey Plaza, die Warren-Kommission und Fragen, die bis heute offen sind."
+          }
+        },
+        {
+          id: "franklin", num: "005", section: "mysteries", year: 1845,
+          yearLabel: { en: "1845", de: "1845" },
+          url: "https://untoldarchive.com/FranklinExpedition/", img: IMG.franklin,
+          title: { en: "The Franklin Expedition", de: "Die Franklin-Expedition" },
+          deck: { en: "Two ships. 129 men. No return.", de: "Zwei Schiffe. 129 Männer. Keine Rückkehr." },
+          desc: {
+            en: "Erebus and Terror set out in 1845 to find the Northwest Passage. No one came back from the Arctic.",
+            de: "Erebus und Terror stachen 1845 in See, um die Nordwestpassage zu finden. Aus der Arktis kehrte niemand zurück."
+          }
+        },
+        {
+          id: "alexander", num: "006", section: "ancient", year: -323,
+          yearLabel: { en: "323 BCE", de: "323 v. Chr." },
+          url: "https://untoldarchive.com/AlexanderOfMacedon/", img: IMG.alexander,
+          title: { en: "Where is Alexander the Great?", de: "Wo ruht Alexander der Große?" },
+          deck: { en: "The lost tomb", de: "Das verlorene Grab" },
+          desc: {
+            en: "Alexander the Great died in Babylon in 323 BCE. His tomb was seen in Alexandria — then it disappeared from the record.",
+            de: "Alexander der Große starb 323 v. Chr. in Babylon. Sein Grab wurde in Alexandria gesehen – dann verschwand es aus den Quellen."
+          }
+        },
+        {
+          id: "black-dahlia", num: "007", section: "investigations", year: 1947,
+          yearLabel: { en: "1947 / 1974", de: "1947 / 1974" },
+          url: "https://untoldarchive.com/BlackDahlia/", img: IMG.blackDahlia,
+          title: { en: "The Black Dahlia & Lord Lucan", de: "Die Black Dahlia & Lord Lucan" },
+          deck: { en: "Two cases, still open", de: "Zwei Fälle, bis heute offen" },
+          desc: {
+            en: "The murder of Elizabeth Short in Los Angeles in 1947 and the disappearance of Lord Lucan in London in 1974. Both cases remain open.",
+            de: "Der Mord an Elizabeth Short in Los Angeles 1947 und das Verschwinden von Lord Lucan in London 1974. Beide Fälle sind nicht abgeschlossen."
+          }
+        },
+        {
+          id: "universe", num: "008", section: "space", year: -13800000000,
+          yearLabel: { en: "13.8 billion years", de: "13,8 Milliarden Jahre" },
+          url: "https://untoldarchive.com/universe/", img: IMG.universe,
+          title: { en: "The Universe", de: "Das Universum" },
+          deck: { en: "An interactive atlas of space", de: "Ein interaktiver Atlas des Weltraums" },
+          desc: {
+            en: "Planets, stars, and galaxies in one atlas — from the Sun’s neighbourhood to the edge of the observable universe.",
+            de: "Planeten, Sterne und Galaxien in einem interaktiven Atlas – von der Nachbarschaft der Sonne bis zum Rand des beobachtbaren Universums."
+          }
+        },
+        {
+          id: "interstellar", num: "009", section: "cinema", year: 2014,
+          yearLabel: { en: "2014", de: "2014" },
+          url: "https://untoldarchive.com/interstellar/", img: IMG.interstellar,
+          title: { en: "Interstellar", de: "Interstellar" },
+          deck: { en: "The mission continues", de: "Die Mission geht weiter" },
+          desc: {
+            en: "Christopher Nolan’s film: a wormhole near Saturn, the black hole Gargantua, and the crew of the Endurance.",
+            de: "Christopher Nolans Film: ein Wurmloch bei Saturn, das Schwarze Loch Gargantua und die Crew der Endurance."
+          }
+        },
+        {
+          id: "avatar-2009", num: "010", section: "cinema", year: 2009,
+          yearLabel: { en: "2009", de: "2009" },
+          url: "https://untoldarchive.com/avatar2009/", img: IMG.avatar1,
+          title: { en: "Avatar", de: "Avatar" },
+          deck: { en: "Pandora · A fan site", de: "Pandora · Eine Fanseite" },
+          desc: {
+            en: "The first meeting with Pandora: the Na’vi, the Tree of Souls, and Jake Sully’s story.",
+            de: "Die erste Begegnung mit Pandora: das Volk der Na’vi, der Baum der Seelen und die Geschichte von Jake Sully."
+          }
+        },
+        {
+          id: "avatar-2022", num: "011", section: "cinema", year: 2022,
+          yearLabel: { en: "2022", de: "2022" },
+          url: "https://untoldarchive.com/avatar2022/", img: IMG.avatar2,
+          title: { en: "Avatar: The Way of Water", de: "Avatar: The Way of Water" },
+          deck: { en: "A dive into Pandora", de: "Eintauchen in Pandora" },
+          desc: {
+            en: "The ocean of Pandora, the Metkayina reef clan, and the Sully family far from the forest.",
+            de: "Der Ozean Pandoras, der Riff-Clan der Metkayina und die Familie Sully fernab des Waldes."
+          }
+        },
+        {
+          id: "avatar-2025", num: "012", section: "cinema", year: 2025,
+          yearLabel: { en: "2025", de: "2025" },
+          url: "https://untoldarchive.com/avatar2025/", img: IMG.avatar3,
+          title: { en: "Avatar: Fire and Ash", de: "Avatar: Feuer und Asche" },
+          deck: { en: "Fire and ash", de: "Feuer und Asche" },
+          desc: {
+            en: "The third chapter of James Cameron’s saga: the Ash People and another, fierier side of Pandora.",
+            de: "Der dritte Teil von James Camerons Saga: das Volk der Asche und eine andere, feurige Seite Pandoras."
+          }
+        },
+        {
+          id: "atlantis", num: "013", section: "ancient", year: -9600,
+          yearLabel: { en: "≈ 9600 BCE", de: "≈ 9600 v. Chr." },
+          url: "https://untoldarchive.com/atlantis/", img: IMG.atlantis,
+          title: { en: "Atlantis", de: "Atlantis" },
+          deck: { en: "The lost civilisation", de: "Die versunkene Zivilisation" },
+          desc: {
+            en: "The island state from Plato’s dialogues Timaeus and Critias. Myth, allegory — or the memory of a real catastrophe?",
+            de: "Der Inselstaat aus Platons Dialogen Timaios und Kritias. Mythos, Allegorie – oder Erinnerung an eine wirkliche Katastrophe?"
+          }
+        }
+      ];
+
+      const SECTION_IDS = ["all", "mysteries", "investigations", "ancient", "space", "cinema"];
+
+      const I18N = {
+        en: {
+          "meta.title": "Untold Archive — A catalogue of untold stories",
+          "meta.description": "An independent index of unresolved mysteries, landmark investigations, space and cinema. Each file opens the original Russian edition.",
+          "a11y.skip": "Skip to the catalogue", "brand.sub": "A catalogue of missing endings",
+          "brand.aria": "Untold Archive — back to top",
+          "nav.index": "The index", "nav.soon": "In preparation", "nav.about": "About",
+          "nav.search": "Search", "nav.searchAria": "Go to search", "nav.menuAria": "Open menu",
+          "nav.primary": "Primary navigation", "nav.mobile": "Mobile navigation", "lang.group": "Language",
+          "nav.russianShort": "RU / Russian original ↗",
+          "ticker": ["Open archive", "13 files · 5 collections", "Original editions in Russian", "Latest entry: Atlantis", "One story, one website"],
+          "hero.eyebrow": "An independent index of unresolved stories",
+          "hero.title": "Archive of<br><em>untold</em><br>stories<span class=\"period\">.</span>",
+          "hero.deck": "Unresolved mysteries, landmark investigations, space, and cinema. Each entry opens a separate website — its own story, facts, and theories.",
+          "hero.browse": "Browse all 13 files", "hero.random": "Open a random file",
+          "hero.plateTop": "Plate 001 / Northern Urals", "hero.featured": "Featured acquisition",
+          "hero.plateTitle": "The Mountain of the Dead", "hero.plateMeta": "Dyatlov Pass · 1959",
+          "hero.note": "One story. One website.", "hero.open": "Open",
+          "hero.featuredAria": "Featured archive plate",
+          "hero.photoAlt": "A beam of light breaking through clouds over a vast arctic landscape",
+          "stats.items": "materials", "stats.sections": "sections", "stats.latest": "latest entry", "stats.latestValue": "Atlantis",
+          "cat.kicker": "The index / Volume I", "cat.title": "The catalogue",
+          "cat.sub": "Thirteen independent files. Find a story by title, section, or moment in time.",
+          "cat.note": "Each file opens the original Russian edition.", "cat.noteLink": "Russian archive",
+          "cat.totalLabel": "files in the archive", "cat.search": "Search the catalogue",
+          "cat.searchPlaceholder": "Search title, section, or year", "cat.sort": "Sort",
+          "cat.sortArchive": "Archive order", "cat.sortNewest": "Newest first", "cat.sortOldest": "Oldest first", "cat.sortAz": "Title A–Z",
+          "cat.gridAria": "Grid view", "cat.listAria": "List view", "cat.clearAria": "Clear search", "cat.viewLabel": "View",
+          "cat.shortcut": "to jump to search", "cat.open": "Open original file", "cat.aria": "Opens the original Russian edition in a new tab.",
+          "cat.original": "Original in Russian", "cat.emptyTitle": "No files match this search.",
+          "cat.emptyText": "Try another title, section, or year.", "cat.reset": "Clear filters",
+          "cat.files": "files", "cat.of": "of", "cat.filterLabel": "Filter by section",
+          "section.all": "All files", "section.mysteries": "Mysteries & disappearances",
+          "section.investigations": "Investigations", "section.ancient": "Ancient world",
+          "section.space": "Space", "section.cinema": "Cinema",
+          "soon.kicker": "Next in the archive", "soon.title": "In <em>preparation.</em>",
+          "soon.copy": "The archive keeps growing. New files are added to the end of the catalogue.",
+          "soon.stamp": "Four files under seal", "soon.hint": "Click an unopened file to see its status.",
+          "soon.toast": "This file is still in preparation.",
+          "soon.rows": [
+            { title: "Actors & actresses", status: "New section" },
+            { title: "New films", status: "Cinema section" },
+            { title: "New mysteries & investigations", status: "In progress" },
+            { title: "A story still under wraps", status: "Classified" }
+          ],
+          "about.kicker": "About the project",
+          "about.title": "Stories without<br><em>a final page.</em>",
+          "about.lead": "Untold Archive is a collection of websites about stories that have never reached a final line — and about <em>worlds worth returning to.</em>",
+          "about.body1": "One subject, one website. This page is the index: find a story by title, section, or date, then follow the link to read. The originals are published in Russian for now; the English and German editions are reading guides to the same files.",
+          "about.body2": "Every file keeps its source material, its open questions, and its own point of view. No invented endings — only the evidence, the versions, and the space between them.",
+          "about.quote": "“History is not a closed book. It is an archive with missing pages.”", "about.quoteBy": "The editors",
+          "about.photoCaption": "The archive is a place, not a verdict.",
+          "about.photoAlt": "A visitor examining vintage photographs in an archive exhibition",
+          "about.p1title": "One story, one website.", "about.p1body": "Each file is a world of its own — its own design, sources, and point of view.",
+          "about.p2title": "A map, not a copy.", "about.p2body": "This page brings the collection together, then opens the full story.",
+          "about.p3title": "Questions stay open.", "about.p3body": "No forced verdicts. We collect facts, versions, and contradictions — you draw your own conclusions.",
+          "about.ctaText": "Not sure where to begin?",
+          "footer.statement": "One story.<br><em>One website.</em>",
+          "footer.desc": "An independent archive of unresolved stories, quiet obsessions, and worlds worth revisiting.",
+          "footer.explore": "Explore", "footer.languages": "Languages", "footer.colophon": "Colophon",
+          "footer.tech": "Single-file edition · HTML / CSS / JS", "footer.photo": "Photography via Pexels",
+          "footer.volume": "Vol. I · Thirteen files · 2026", "footer.original": "Russian original ↗",
+          "footer.copyright": "© 2026 Untold Archive", "footer.made": "Built for the curious.", "footer.top": "Back to top",
+          "toast.opening": "Opening a file from the archive…", "toast.lang": "Language switched to English."
+        },
+        de: {
+          "meta.title": "Untold Archive — Ein Katalog unerzählter Geschichten",
+          "meta.description": "Ein unabhängiges Verzeichnis ungelöster Rätsel, großer Ermittlungen, von Weltraum und Kino. Jede Akte öffnet die originale russische Ausgabe.",
+          "a11y.skip": "Zum Katalog springen", "brand.sub": "Ein Katalog fehlender Enden",
+          "brand.aria": "Untold Archive — nach oben",
+          "nav.index": "Der Index", "nav.soon": "In Vorbereitung", "nav.about": "Über das Projekt",
+          "nav.search": "Suche", "nav.searchAria": "Zur Suche springen", "nav.menuAria": "Menü öffnen",
+          "nav.primary": "Hauptnavigation", "nav.mobile": "Mobile Navigation", "lang.group": "Sprache",
+          "nav.russianShort": "RU / Russisches Original ↗",
+          "ticker": ["Offenes Archiv", "13 Akten · 5 Rubriken", "Originalausgaben auf Russisch", "Neuester Zugang: Atlantis", "Eine Geschichte, eine Website"],
+          "hero.eyebrow": "Ein unabhängiges Verzeichnis ungelöster Geschichten",
+          "hero.title": "Archiv der<br><em>unerzählten</em><br>Geschichten<span class=\"period\">.</span>",
+          "hero.deck": "Ungelöste Rätsel, große Ermittlungen, Weltraum und Kino. Jede Akte öffnet eine eigene Website – mit ihrer Geschichte, den Fakten und den Theorien.",
+          "hero.browse": "Alle 13 Akten ansehen", "hero.random": "Zufällige Akte öffnen",
+          "hero.plateTop": "Tafel 001 / Nördlicher Ural", "hero.featured": "Neuester Zugang",
+          "hero.plateTitle": "Der Berg der Toten", "hero.plateMeta": "Djatlow-Pass · 1959",
+          "hero.note": "Eine Geschichte. Eine Website.", "hero.open": "Offen",
+          "hero.featuredAria": "Hervorgehobene Archivtafel",
+          "hero.photoAlt": "Ein Lichtstrahl bricht durch Wolken über einer weiten arktischen Landschaft",
+          "stats.items": "Materialien", "stats.sections": "Rubriken", "stats.latest": "neuester Eintrag", "stats.latestValue": "Atlantis",
+          "cat.kicker": "Der Index / Band I", "cat.title": "Der Katalog",
+          "cat.sub": "Dreizehn eigenständige Akten. Finde eine Geschichte nach Titel, Rubrik oder Zeitpunkt.",
+          "cat.note": "Jede Akte öffnet die originale russische Ausgabe.", "cat.noteLink": "Russisches Archiv",
+          "cat.totalLabel": "Akten im Archiv", "cat.search": "Katalog durchsuchen",
+          "cat.searchPlaceholder": "Titel, Rubrik oder Jahr suchen", "cat.sort": "Sortierung",
+          "cat.sortArchive": "Archivreihenfolge", "cat.sortNewest": "Neueste zuerst", "cat.sortOldest": "Älteste zuerst", "cat.sortAz": "Titel A–Z",
+          "cat.gridAria": "Rasteransicht", "cat.listAria": "Listenansicht", "cat.clearAria": "Suche löschen", "cat.viewLabel": "Ansicht",
+          "cat.shortcut": "springt zur Suche", "cat.open": "Originalakte öffnen", "cat.aria": "Öffnet die originale russische Ausgabe in einem neuen Tab.",
+          "cat.original": "Original auf Russisch", "cat.emptyTitle": "Keine Akte passt zu dieser Suche.",
+          "cat.emptyText": "Versuche es mit einem anderen Titel, einer Rubrik oder einem Jahr.", "cat.reset": "Filter zurücksetzen",
+          "cat.files": "Akten", "cat.of": "von", "cat.filterLabel": "Nach Rubrik filtern",
+          "section.all": "Alle Akten", "section.mysteries": "Rätsel & Verschwinden",
+          "section.investigations": "Ermittlungen", "section.ancient": "Antike",
+          "section.space": "Weltraum", "section.cinema": "Kino",
+          "soon.kicker": "Als Nächstes im Archiv", "soon.title": "In <em>Vorbereitung.</em>",
+          "soon.copy": "Das Archiv wächst. Neue Akten werden am Ende des Katalogs ergänzt.",
+          "soon.stamp": "Vier Akten unter Verschluss", "soon.hint": "Klicke auf eine ungeöffnete Akte, um ihren Status zu sehen.",
+          "soon.toast": "Diese Akte wird noch vorbereitet.",
+          "soon.rows": [
+            { title: "Schauspielerinnen & Schauspieler", status: "Neue Rubrik" },
+            { title: "Neue Filme", status: "Rubrik Kino" },
+            { title: "Neue Rätsel & Ermittlungen", status: "In Arbeit" },
+            { title: "Eine noch verborgene Geschichte", status: "Verschlossen" }
+          ],
+          "about.kicker": "Über das Projekt",
+          "about.title": "Geschichten ohne<br><em>letzte Seite.</em>",
+          "about.lead": "Untold Archive ist eine Sammlung von Websites über Geschichten, die bis heute kein endgültiges Kapitel haben – und über <em>Welten, in die man zurückkehren möchte.</em>",
+          "about.body1": "Ein Thema, eine Website. Diese Seite ist der Index: Finde eine Geschichte nach Titel, Rubrik oder Datum und folge dem Link zum Lesen. Die Originale erscheinen vorerst auf Russisch; die englische und die deutsche Ausgabe dienen als Lesehilfe zu denselben Akten.",
+          "about.body2": "Jede Akte bewahrt ihr Quellenmaterial, ihre offenen Fragen und ihren eigenen Blickwinkel. Keine erfundenen Enden – nur die Belege, die Versionen und den Raum dazwischen.",
+          "about.quote": "„Die Geschichte ist kein geschlossenes Buch. Sie ist ein Archiv mit fehlenden Seiten.“", "about.quoteBy": "Die Redaktion",
+          "about.photoCaption": "Das Archiv ist ein Ort, kein Urteil.",
+          "about.photoAlt": "Eine Besucherin betrachtet historische Fotografien in einer Archivausstellung",
+          "about.p1title": "Eine Geschichte, eine Website.", "about.p1body": "Jede Akte ist eine eigene Welt – mit eigenem Design, eigenen Quellen und eigenem Blickwinkel.",
+          "about.p2title": "Ein Index, keine Kopie.", "about.p2body": "Diese Seite führt die Sammlung zusammen und öffnet dann die vollständige Geschichte.",
+          "about.p3title": "Fragen bleiben offen.", "about.p3body": "Keine erzwungenen Urteile. Wir sammeln Fakten, Versionen und Widersprüche – du ziehst deine eigenen Schlüsse.",
+          "about.ctaText": "Nicht sicher, wo du anfangen sollst?",
+          "footer.statement": "Eine Geschichte.<br><em>Eine Website.</em>",
+          "footer.desc": "Ein unabhängiges Archiv ungelöster Geschichten, stiller Obsessionen und Welten, die einen Besuch wert sind.",
+          "footer.explore": "Erkunden", "footer.languages": "Sprachen", "footer.colophon": "Kolophon",
+          "footer.tech": "Einzeldatei-Ausgabe · HTML / CSS / JS", "footer.photo": "Fotografie via Pexels",
+          "footer.volume": "Band I · Dreizehn Akten · 2026", "footer.original": "Russisches Original ↗",
+          "footer.copyright": "© 2026 Untold Archive", "footer.made": "Für Neugierige gebaut.", "footer.top": "Nach oben",
+          "toast.opening": "Eine Akte aus dem Archiv wird geöffnet…", "toast.lang": "Sprache auf Deutsch umgestellt."
+        }
+      };
+
+      const state = {
+        lang: "en",
+        section: "all",
+        query: "",
+        sort: "archive",
+        view: "grid"
+      };
+
+      const qs = (selector, root = document) => root.querySelector(selector);
+      const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const t = (key) => I18N[state.lang][key];
+      const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+
+      let toastTimer;
+
+      function showToast(message) {
+        const toast = qs("#toast");
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 3000);
+      }
+
+      function getVisibleStories() {
+        const query = state.query.trim().toLowerCase();
+        let result = STORIES.filter((story) => {
+          const sectionMatch = state.section === "all" || story.section === state.section;
+          if (!sectionMatch) return false;
+          if (!query) return true;
+          const haystack = [
+            story.title[state.lang], story.deck[state.lang], story.desc[state.lang],
+            t("section." + story.section), story.yearLabel[state.lang],
+            story.num, "no " + story.num, "file " + story.num
+          ].join(" ").toLowerCase();
+          return haystack.includes(query);
+        });
+
+        result = result.slice();
+        if (state.sort === "archive") result.sort((a, b) => a.num.localeCompare(b.num));
+        if (state.sort === "newest") result.sort((a, b) => b.year - a.year || a.num.localeCompare(b.num));
+        if (state.sort === "oldest") result.sort((a, b) => a.year - b.year || a.num.localeCompare(b.num));
+        if (state.sort === "az") result.sort((a, b) => a.title[state.lang].localeCompare(b.title[state.lang], state.lang === "de" ? "de" : "en"));
+        return result;
+      }
+
+      function resultLabel(count) {
+        if (count === STORIES.length) return count + " " + t("cat.files");
+        return count + " " + t("cat.of") + " " + STORIES.length + " " + t("cat.files");
+      }
+
+      function renderTicker() {
+        const items = t("ticker");
+        const group = items.map((item) => `<span class="ticker-item">${escapeHtml(item)}</span><span class="ticker-star" aria-hidden="true">✳</span>`).join("");
+        qs("#tickerTrack").innerHTML = `<div class="ticker-group">${group}</div><div class="ticker-group" aria-hidden="true">${group}</div>`;
+      }
+
+      function renderFilters() {
+        const filters = qs("#filters");
+        filters.setAttribute("aria-label", t("cat.filterLabel"));
+        filters.innerHTML = SECTION_IDS.map((section) => {
+          const count = section === "all" ? STORIES.length : STORIES.filter((story) => story.section === section).length;
+          const label = t("section." + section);
+          return `<button class="filter-btn${state.section === section ? " is-active" : ""}" type="button" data-filter="${section}" aria-pressed="${state.section === section}">
+            <span>${escapeHtml(label)}</span><span class="filter-count">${String(count).padStart(2, "0")}</span>
+          </button>`;
+        }).join("");
+      }
+
+      function renderSort() {
+        const select = qs("#sortSelect");
+        const options = [
+          ["archive", t("cat.sortArchive")],
+          ["newest", t("cat.sortNewest")],
+          ["oldest", t("cat.sortOldest")],
+          ["az", t("cat.sortAz")]
+        ];
+        select.innerHTML = options.map(([value, label]) => `<option value="${value}"${state.sort === value ? " selected" : ""}>${escapeHtml(label)}</option>`).join("");
+      }
+
+      function cardTemplate(story) {
+        const title = story.title[state.lang];
+        const deck = story.deck[state.lang];
+        const desc = story.desc[state.lang];
+        const section = t("section." + story.section);
+        const year = story.yearLabel[state.lang];
+        return `<li class="story-card reveal" data-section="${story.section}">
+          <a class="story-link" href="${story.url}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)} — ${escapeHtml(section)}. ${escapeHtml(t("cat.aria"))}">
+            <figure class="story-media">
+              <img src="${story.img}" alt="${escapeHtml(title + " — " + deck)}" loading="lazy" width="1000" height="750" onerror="this.style.opacity=0">
+              <span class="story-number mono">№ ${story.num}</span>
+              <span class="ru-flag mono" title="${escapeHtml(t("cat.original"))}">RU ↗</span>
+              <span class="story-arrow" aria-hidden="true">↗</span>
+            </figure>
+            <div class="story-copy">
+              <div class="story-meta"><span>${escapeHtml(section)}</span><span class="meta-dash">/</span><span class="meta-year">${escapeHtml(year)}</span></div>
+              <p class="story-deck">${escapeHtml(deck)}</p>
+              <h3 class="story-title">${escapeHtml(title)}</h3>
+              <p class="story-desc">${escapeHtml(desc)}</p>
+              <div class="story-footer">
+                <span class="story-cta">${escapeHtml(t("cat.open"))} <span aria-hidden="true">↗</span></span>
+                <span class="story-year">${escapeHtml(year)}</span>
+              </div>
+            </div>
+          </a>
+        </li>`;
+      }
+
+      function renderStories() {
+        const stories = getVisibleStories();
+        const grid = qs("#grid");
+        grid.dataset.view = state.view;
+        qs("#resultsMeta").textContent = resultLabel(stories.length);
+
+        if (!stories.length) {
+          grid.innerHTML = `<li class="empty-state">
+            <span class="empty-star" aria-hidden="true">✳</span>
+            <h3>${escapeHtml(t("cat.emptyTitle"))}</h3>
+            <p>${escapeHtml(t("cat.emptyText"))}</p>
+            <button class="btn btn-primary" type="button" id="emptyReset"><span>${escapeHtml(t("cat.reset"))}</span><span class="btn-arrow" aria-hidden="true">↗</span></button>
+          </li>`;
+          const reset = qs("#emptyReset");
+          if (reset) reset.addEventListener("click", resetFilters);
+        } else {
+          grid.innerHTML = stories.map(cardTemplate).join("");
+        }
+
+        qsa(".reveal", grid).forEach((element, index) => {
+          element.style.transitionDelay = Math.min(index * 24, 180) + "ms";
+          if ("IntersectionObserver" in window) {
+            revealObserver.observe(element);
+          } else {
+            element.classList.add("is-visible");
+          }
+        });
+      }
+
+      let revealObserver;
+
+      function initRevealObserver() {
+        if (!("IntersectionObserver" in window)) return;
+        revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -6% 0px", threshold: 0.03 });
+      }
+
+      function renderSoon() {
+        const rows = t("soon.rows");
+        qs("#soonList").innerHTML = rows.map((row, index) => {
+          const locked = index === rows.length - 1;
+          return `<li>
+            <button class="soon-row${locked ? " locked" : ""}" type="button" data-soon-index="${index}" aria-label="${escapeHtml(row.title)} — ${escapeHtml(row.status)}. ${escapeHtml(t("soon.toast"))}">
+              <span class="soon-num">${String(index + 1).padStart(2, "0")}</span>
+              <span class="soon-title">${escapeHtml(row.title)}</span>
+              <span class="soon-status">${escapeHtml(row.status)}</span>
+            </button>
+          </li>`;
+        }).join("");
+      }
+
+      function renderStatic() {
+        document.documentElement.lang = state.lang;
+        document.title = t("meta.title");
+        const description = qs('meta[name="description"]');
+        if (description) description.setAttribute("content", t("meta.description"));
+        qs("#heroTitle").innerHTML = t("hero.title");
+        const heroImage = qs(".specimen-frame img");
+        if (heroImage) heroImage.alt = t("hero.photoAlt");
+        const aboutImage = qs(".about-figure img");
+        if (aboutImage) aboutImage.alt = t("about.photoAlt");
+        const catalogTotal = qs("#catalogTotal");
+        if (catalogTotal) catalogTotal.setAttribute("aria-label", STORIES.length + " " + t("cat.totalLabel"));
+
+        qsa("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          const value = t(key);
+          if (typeof value === "string") element.textContent = value;
+        });
+        qsa("[data-i18n-html]").forEach((element) => {
+          const key = element.dataset.i18nHtml;
+          const value = t(key);
+          if (typeof value === "string") element.innerHTML = value;
+        });
+        qsa("[data-i18n-aria]").forEach((element) => {
+          const key = element.dataset.i18nAria;
+          const value = t(key);
+          if (typeof value === "string") {
+            element.setAttribute("aria-label", value);
+            if (element.tagName === "BUTTON" && key === "nav.menuAria") element.title = value;
+          }
+        });
+
+        const searchInput = qs("#searchInput");
+        searchInput.placeholder = t("cat.searchPlaceholder");
+        searchInput.setAttribute("aria-label", t("cat.search"));
+        qs("#searchClear").setAttribute("aria-label", t("cat.clearAria"));
+        qs("#gridView").setAttribute("aria-label", t("cat.gridAria"));
+        qs("#listView").setAttribute("aria-label", t("cat.listAria"));
+
+        qsa("[data-lang]").forEach((button) => {
+          const active = button.dataset.lang === state.lang;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+          if (button.closest(".footer-links")) button.classList.toggle("is-current", active);
+        });
+      }
+
+      function renderAll() {
+        renderStatic();
+        renderTicker();
+        renderFilters();
+        renderSort();
+        renderStories();
+        renderSoon();
+      }
+
+      function setLang(lang, announce = false) {
+        if (!I18N[lang] || lang === state.lang) return;
+        state.lang = lang;
+        try { localStorage.setItem("ua-language", lang); } catch (error) { /* no storage available */ }
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", lang);
+          window.history.replaceState({}, "", url);
+        } catch (error) { /* static file mode */ }
+        renderAll();
+        if (announce) showToast(t("toast.lang"));
+      }
+
+      function resetFilters() {
+        state.section = "all";
+        state.query = "";
+        qs("#searchInput").value = "";
+        qs("#searchClear").classList.remove("is-visible");
+        renderFilters();
+        renderStories();
+      }
+
+      function openRandom() {
+        const stories = getVisibleStories();
+        const pool = stories.length ? stories : STORIES;
+        const story = pool[Math.floor(Math.random() * pool.length)];
+        showToast(t("toast.opening"));
+        window.open(story.url, "_blank", "noopener,noreferrer");
+      }
+
+      function focusSearch() {
+        const input = qs("#searchInput");
+        const catalog = qs("#catalog");
+        if (catalog) catalog.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => {
+          input.focus({ preventScroll: true });
+          input.select();
+        }, 370);
+      }
+
+      function closeMenu() {
+        qs("#mobileNav").classList.remove("is-open");
+        qs("#menuToggle").setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+      }
+
+      function initEvents() {
+        qs("#filters").addEventListener("click", (event) => {
+          const button = event.target.closest("[data-filter]");
+          if (!button) return;
+          state.section = button.dataset.filter;
+          renderFilters();
+          renderStories();
+          const activeFilter = qs(`.filter-btn[data-filter="${state.section}"]`);
+          if (activeFilter) activeFilter.focus();
+        });
+
+        qs("#sortSelect").addEventListener("change", (event) => {
+          state.sort = event.target.value;
+          renderStories();
+        });
+
+        qs("#searchInput").addEventListener("input", (event) => {
+          state.query = event.target.value;
+          qs("#searchClear").classList.toggle("is-visible", Boolean(state.query));
+          renderStories();
+        });
+
+        qs("#searchClear").addEventListener("click", () => {
+          state.query = "";
+          qs("#searchInput").value = "";
+          qs("#searchClear").classList.remove("is-visible");
+          renderStories();
+          qs("#searchInput").focus();
+        });
+
+        qsa(".view-btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.view = button.dataset.view;
+            qsa(".view-btn").forEach((item) => {
+              const active = item === button;
+              item.classList.toggle("is-active", active);
+              item.setAttribute("aria-pressed", String(active));
+            });
+            qs("#grid").dataset.view = state.view;
+            try { localStorage.setItem("ua-view", state.view); } catch (error) { /* no storage */ }
+            renderStories();
+          });
+        });
+
+        qsa("[data-lang]").forEach((button) => {
+          button.addEventListener("click", () => setLang(button.dataset.lang, true));
+        });
+
+        qsa("#jumpSearch, #footerSearch").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            closeMenu();
+            focusSearch();
+          });
+        });
+
+        qsa("#heroRandom, #aboutRandom").forEach((button) => {
+          button.addEventListener("click", openRandom);
+        });
+
+        qs("#soonList").addEventListener("click", (event) => {
+          if (event.target.closest("[data-soon-index]")) showToast(t("soon.toast"));
+        });
+
+        qs("#menuToggle").addEventListener("click", () => {
+          const open = !qs("#mobileNav").classList.contains("is-open");
+          qs("#mobileNav").classList.toggle("is-open", open);
+          qs("#menuToggle").setAttribute("aria-expanded", String(open));
+          document.body.classList.toggle("menu-open", open);
+        });
+
+        qsa("#mobileNav a").forEach((link) => link.addEventListener("click", closeMenu));
+
+        document.addEventListener("keydown", (event) => {
+          const target = event.target;
+          const isTyping = target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable);
+          if (event.key === "/" && !isTyping && !event.metaKey && !event.ctrlKey && !event.altKey) {
+            event.preventDefault();
+            focusSearch();
+          }
+          if (event.key === "Escape") {
+            if (target === qs("#searchInput") && state.query) {
+              state.query = "";
+              qs("#searchInput").value = "";
+              qs("#searchClear").classList.remove("is-visible");
+              renderStories();
+            }
+            closeMenu();
+          }
+        });
+
+        window.addEventListener("scroll", () => {
+          if (qs("#mobileNav").classList.contains("is-open") && window.scrollY > 50) closeMenu();
+        }, { passive: true });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 980) closeMenu();
+        });
+      }
+
+      function init() {
+        initRevealObserver();
+
+        let initialLang = "en";
+        try {
+          const stored = localStorage.getItem("ua-language");
+          const requested = new URLSearchParams(window.location.search).get("lang");
+          if (requested === "de" || requested === "en") initialLang = requested;
+          else if (stored === "de" || stored === "en") initialLang = stored;
+          const savedView = localStorage.getItem("ua-view");
+          if (savedView === "grid" || savedView === "list") state.view = savedView;
+        } catch (error) { /* static file mode */ }
+
+        state.lang = initialLang;
+        qsa(".view-btn").forEach((button) => {
+          const active = button.dataset.view === state.view;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+
+        renderAll();
+        initEvents();
+
+        qsa(".section-title, .about-figure, .footer-statement").forEach((element) => {
+          element.classList.add("reveal");
+          if (revealObserver) revealObserver.observe(element);
+          else element.classList.add("is-visible");
+        });
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
